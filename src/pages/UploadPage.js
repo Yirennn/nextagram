@@ -51,7 +51,7 @@ return (
   <div>
     <Card>
       {previewImage ? (
-        <img src={previewImage} alt="preview-image" width="50%" height="50%"/>
+        <img src={previewImage} alt="preview" width="50%" height="50%"/>
         ) : (
           <h3 className="text-center">Preview</h3>
         )}
