@@ -1,5 +1,4 @@
 import React from 'react';
-import loader from '../loader.gif';
 
 function LoadingIndicator(props){
     const {width,height,color} = props

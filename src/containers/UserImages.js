@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+
+//components
 import LoadingIndicator from '../components/LoadingIndicator';
 
 const UserImages = ({userId}) => {
@@ -26,7 +28,7 @@ const UserImages = ({userId}) => {
         {images.map((image, index) => {
           return (
             <div className='col-3 p-3 p-sm-0' key={`${userId}-images${index}`}>
-              <img src={image} alt='user image' width='100%' height='250' className='p-1 mx-auto image-fluid' style={{borderRadius: '20px', objectFit: 'cover'}}/>
+              <img src={image} width='100%' height='250' className='p-1 mx-auto image-fluid' style={{borderRadius: '20px', objectFit: 'cover'}}/>
             </div>
             )
           })

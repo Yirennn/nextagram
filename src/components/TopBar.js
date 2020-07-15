@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Button,
   Navbar,
@@ -7,25 +7,34 @@ import {
   NavItem,
   NavLink
   } from 'reactstrap';
-import { useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import AuthModal from '../components/AuthModal';
 
 const TopBar = ({token, setToken}) => {
+
+  const handleLogout = () => {
+    localStorage.removeItem("token")
+    setToken(null)
+    history.push("/")
+  }
+
   const history = useHistory()
 
   return(
     <Navbar color="secondary" dark expand="md">
-      <NavbarBrand onClick={() => {history.push('/')}}>Nextagram</NavbarBrand>
+      <NavbarBrand cursor="pointer" onClick={() => {history.push('/')}}>
+        Nextagram
+      </NavbarBrand>
       <Nav className="mr-auto" navbar>
         <NavItem>
-            <NavLink onClick={() => {history.push('/users/1')}}>My Profile</NavLink>
+            <NavLink onClick={() => {history.push("/profile")}}>Profile</NavLink>
         </NavItem>
       </Nav>
       <Nav>
         <NavItem>
           <NavLink>
             {token
-            ? <Button color="primary">Logout</Button>
+            ? <Button outline color="warning" onClick={handleLogout}>Logout</Button>
             : <AuthModal setToken={setToken}/>
             }
           </NavLink>

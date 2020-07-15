@@ -1,5 +1,15 @@
 import React, { useState } from "react"
-import { Button, FormFeedback, FormText,FormGroup,Label,Input, ModalFooter, ModalBody, ModalHeader, Form } from "reactstrap";
+import {
+  Button,
+  FormFeedback,
+  FormText,
+  FormGroup,
+  Label,
+  Input,
+  ModalFooter,
+  ModalBody,
+  ModalHeader,
+  Form } from "reactstrap";
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -19,9 +29,9 @@ const SignUpForm = ({toggle,toggleForm}) => {
       .get(
         `https://insta.nextacademy.com/api/v1/users/check_name?username=${newUsername}`
       )
-      .then(response => {
-        console.log(response.data);
-        if (response.data.valid) {
+      .then(resp => {
+        console.log(resp.data);
+        if (resp.data.valid) {
           setUsernameValid(true);
         } else {
           setUsernameValid(false);
@@ -107,42 +117,44 @@ const SignUpForm = ({toggle,toggleForm}) => {
 
   return (
     <>
-      <ModalHeader toggle={toggle}>Sign Up Form</ModalHeader>
+      <ModalHeader toggle={toggle}>Sign Up</ModalHeader>
       <ModalBody>
         <Form id="signup-form" onSubmit={handleSignUp}>
           <FormGroup>
             <Label for="username">Username</Label>
             <Input
-              type="text" name="username" onChange={handleInput} value={username}
-              {...getInputProp()}/>
+              type="text"
+              name="username"
+              onChange={handleInput}
+              value={username}
+              {...getInputProp()}
+            />
             {getFormFeedback()}
             <FormText>Enter a username between 6 and 20 characters</FormText>
           </FormGroup>
+          <FormGroup>
+            <Label for="email">Email</Label>
+            <Input
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleInput}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="password">Password</Label>
+            <Input
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleInput}
+            />
+          </FormGroup>
         </Form>
-        <FormGroup>
-          <Label for="email">Email</Label>
-          <Input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleInput}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label for="password">Password</Label>
-          <Input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleInput}
-          />
-        </FormGroup>
-        <span>Already a member? </span>
-        <input type="submit" className="btn btn-outline-info" form="login-form" value="Login here" onClick={toggleForm}/>
       </ModalBody>
       <ModalFooter>
-        <Button color="primary" disabled={!usernameValid} >Sign Up</Button>{' '}
-        <Button color="secondary">Cancel</Button>
+        <input form="signup-form" type="submit" disabled={!usernameValid} value="Sign Up" className="btn btn-primary" />{' '}
+        <Button outline color="warning" onClick={toggleForm}>Login now</Button>
       </ModalFooter>
     </>
   );
