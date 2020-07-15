@@ -51,9 +51,9 @@ return (
   <div>
     <Card>
       {previewImage ? (
-        <img src={previewImage} width="50%" height="50%" alt="preview-image"/>
+        <img src={previewImage} width="50%" height="50%"/>
         ) : (
-          <h3 className="text-center"></h3>
+          <h3 className="text-center">Preview</h3>
         )}
     </Card>
     <Form onSubmit={handleImageUpload}>

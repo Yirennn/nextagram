@@ -39,7 +39,7 @@ const HomePage = () => {
           {users.map(user => (
             <Row key={user.id} className="bg-light p-4 mx-0 my-5 rounded">
               <Col sm="2" className="mt-3">
-                <CardImg top width="100%" src={user.profileImage} width="100%" alt="Profile image" className="rounded-circle img-thumbnail img-fluid"/>
+                <CardImg top width="100%" src={user.profileImage} alt="Profile image" className="rounded-circle img-thumbnail img-fluid"/>
                 <CardBody className="text-center">
                   <CardTitle>{user.username}</CardTitle>
                   <Link to={`/users/${user.id}`}>
