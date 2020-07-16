@@ -9,7 +9,6 @@ import UserProfilePage from './pages/UserProfilePage';
 import TopBar from './components/TopBar';
 import MyProfilePage from './pages/MyProfilePage';
 import UploadPage from './pages/UploadPage';
-import SignupForm from './components/SignupForm';
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"))
@@ -23,7 +22,6 @@ function App() {
           <HomePage/>
         </Route>
         <Route path="/users/:userId" component={UserProfilePage}/>
-        <Route path="/signup" component={SignupForm}/>
         <Route path="/profile" component={MyProfilePage}/>
         <Route path="/upload" component={UploadPage}/>
       </Switch>
